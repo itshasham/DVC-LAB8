@@ -3,29 +3,26 @@ stages:
   train:
     cmd: python src/train.py
     deps:
-      - path: data/zameen-updated.csv
-        md5: 862ce971c086da8903e8ecc7c8a52c92
-        size: 49522076
-      - path: params.yaml
-        md5: fb207ab2fcef14d820e6edf5b6f7ea50
-        size: 368
-      - path: src/train.py
-        md5: 90806cdc5523ea5b2c352d84b9b1bb65
-        size: 3727
+    - path: data/zameen-updated.csv
+      md5: 862ce971c086da8903e8ecc7c8a52c92
+      size: 49522076
+    - path: params.yaml
+      md5: fb207ab2fcef14d820e6edf5b6f7ea50
+      size: 368
+    - path: src/train.py
+      md5: 90806cdc5523ea5b2c352d84b9b1bb65
+      size: 3727
     params:
       params.yaml:
         data:
           path: data/zameen-updated.csv
           target: price
           drop_columns:
-            - property_id
-            - page_url
-            - date_added
-            - agency
-            - agent
-        split:
-          test_size: 0.2
-          random_state: 42
+          - property_id
+          - page_url
+          - date_added
+          - agency
+          - agent
         model:
           type: RandomForestRegressor
           params:
@@ -34,18 +31,20 @@ stages:
             min_samples_split: 2
             min_samples_leaf: 1
             n_jobs: -1
+        split:
+          test_size: 0.2
+          random_state: 42
         training:
           shuffle: true
     outs:
-      - path: models/model.pkl
-        md5: ff3f5cfc3145817ca789b88c8bd14403
-        size: 173366387
-        nfiles: 1
-      - path: artifacts/columns.json
-        md5: 983f978dadd94e762d5f355390b237b8
-        size: 277
-        nfiles: 1
-      - path: metrics.json
-        md5: 5aa9f94b65107291d5604310fe856615
-        size: 109
-        nfiles: 1
+    - path: artifacts/columns.json
+      md5: 983f978dadd94e762d5f355390b237b8
+      size: 277
+    - path: metrics.json
+      hash: md5
+      md5: accb6b454961e7d72fe4472de91e8e47
+      size: 111
+    - path: models/model.pkl
+      hash: md5
+      md5: d42769a65f5eb7f0aadccc0f120e17d3
+      size: 172765763

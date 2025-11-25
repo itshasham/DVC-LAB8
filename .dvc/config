@@ -1,8 +1,9 @@
 [core]
     remote = localremote
+    site_cache_dir = .dvc/site-cache
 [state]
     dir = .dvc/state
 [cache]
-    dir = .dvc/cache
+    dir = cache
 [remote "localremote"]
     url = ./dvc_store
