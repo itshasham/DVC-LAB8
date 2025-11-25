@@ -1,0 +1,18 @@
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+      - data/zameen-updated.csv
+      - params.yaml
+      - src/train.py
+    params:
+      - data
+      - split
+      - model
+      - training
+    outs:
+      - models/model.pkl
+      - artifacts/columns.json
+    metrics:
+      - metrics.json:
+          cache: false

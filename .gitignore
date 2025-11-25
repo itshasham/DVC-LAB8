@@ -1,0 +1,17 @@
+# System
+.DS_Store
+__pycache__/
+*.pyc
+
+# Environments
+.env
+.venv/
+
+# DVC cache/local artifacts
+dvc_store/
+
+# Model/data artifacts (tracked via DVC instead of Git)
+data/
+models/
+artifacts/
+metrics.json

@@ -1,0 +1,8 @@
+[core]
+    remote = localremote
+[state]
+    dir = .dvc/state
+[cache]
+    dir = .dvc/cache
+[remote "localremote"]
+    url = ./dvc_store
